@@ -1,15 +1,19 @@
-import { useState } from 'react'
-import { CgMenuRight } from 'react-icons/cg'
+import { useOutsideClick } from '../../../hooks/useOutsideHook'
+import styles from './Hamburger.module.scss'
 import Menu from './Menu'
+import { useState } from 'react'
+
+import { CgMenuRight } from 'react-icons/cg'	
+import { IoClose } from 'react-icons/io5'
 
 const Hamburger = () => {
-	const [isOpen, setIsOpen] = useState(false)
+	const { ref, isOpen, setIsOpen } = useOutsideClick(false)
 
 	return (
 		<>
-			<div>
+			<div className={styles.wrapper} ref={ref}>
 				<button onClick={() => setIsOpen(!isOpen)}>
-					<CgMenuRight color='white' />
+					{isOpen ? <IoClose color='white' /> : <CgMenuRight color='white' />}
 				</button>
 				<Menu isOpen={isOpen}></Menu>
 			</div>

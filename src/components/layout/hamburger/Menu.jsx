@@ -1,6 +1,6 @@
-import cn from 'clsx'
+import styles from './Hamburger.module.scss'
 import { menu } from './menu.data'
-import styles from './Menu.module.scss'
+import cn from 'clsx'
 
 const Menu = ({ isOpen }) => {
 	const logoutHandler = () => {}
@@ -13,7 +13,7 @@ const Menu = ({ isOpen }) => {
 		>
 			<ul>
 				{menu.map((item, idx) => {
-					;<li key={`menu-${idx}`}>{item.title}</li>
+					return <li key={`menu-${idx}`}>{item.title}</li>
 				})}
 				<li>
 					<button onClick={logoutHandler}>logOut</button>

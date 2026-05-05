@@ -1,4 +1,4 @@
-@import '../../../assets/styles';
+@import '/src/assets/styles/variables';
 
 .wrapper {
     position: relative;
@@ -8,15 +8,16 @@
         border: none;
         outline: none;
         cursor: pointer;
+        color: #000;
     }
 
     .menu {
-        position: inherit;
+        position: absolute;
         top: calc(100% + 8px);
         right: 0;
         background-color: #fff;
         padding: 10px 12px;
-        font-size: 14px;
+        font-size: 16px;
         box-shadow: $bx-16;
         border-radius: 10px 0 10px 10px;
         min-width: 116px;
@@ -30,6 +31,8 @@
 
         >ul {
             list-style: none;
+            display: flex;
+            flex-direction: column;
 
             a {
                 color: #000;
@@ -39,7 +42,6 @@
                 &:hover,
                 &:active {
                     color: $accent;
-                    margin: 4px 0;
                 }
             }
         }

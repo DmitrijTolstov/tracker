@@ -4,19 +4,25 @@ import { useAuth } from '../hooks/useAuth'
 
 import { routes } from './routes.data'
 import Home from '../components/layout/screens/home/Home'
-console.log(routes.map(route => route.path))
 
 const Router = () => {
+	const { isAuth } = useAuth()
+
 	return (
 		<BrowserRouter>
 			<Routes>
-				{routes.map(route => (
-					<Route
-						key={route.path}
-						path={route.path}
-						element={<route.component></route.component>}
-					></Route>
-				))}
+				{routes.map(route => {
+					if (route.auth && !isAuth) {
+						return false
+					}
+					return (
+						<Route
+							key={route.path}
+							path={route.path}
+							element={<route.component></route.component>}
+						></Route>
+					)
+				})}
 				<Route path='*' element={<NotFound></NotFound>}></Route>
 			</Routes>
 		</BrowserRouter>

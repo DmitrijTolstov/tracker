@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styles from './Hamburger.module.scss'
 import { menu } from './menu.data'
 import cn from 'clsx'
@@ -13,7 +14,11 @@ const Menu = ({ isOpen }) => {
 		>
 			<ul>
 				{menu.map((item, idx) => {
-					return <li key={`menu-${idx}`}>{item.title}</li>
+					return (
+						<Link key={`menu-${idx}`} to={item.link}>
+							{item.title}
+						</Link>
+					)
 				})}
 				<li>
 					<button onClick={logoutHandler}>logOut</button>

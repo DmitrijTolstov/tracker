@@ -1,7 +1,9 @@
+import Layout from '../../Layout'
+
 const Profile = () => {
 	return (
 		<>
-			<div>Profile</div>
+			<Layout>Profile</Layout>
 		</>
 	)
 }

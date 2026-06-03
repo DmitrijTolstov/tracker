@@ -22,6 +22,6 @@ export const routes = [
 	{
 		path: '/profile',
 		component: Profile,
-		auth: true
+		auth: false
 	}
 ]

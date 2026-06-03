@@ -7,6 +7,8 @@ import Loader from '../../../UI/loader/Loader'
 import styles from './Auth.module.scss'
 
 import { useState } from 'react'
+import { useMutation } from '@tanstack/react-query'
+import AuthService from '../../../../services/auth.service'
 
 const Auth = () => {
 	const {
@@ -17,13 +19,16 @@ const Auth = () => {
 		mode: 'onchange'
 	})
 
-	const isLoading = false
 	const isAuthLoading = false
 
-	const [type, setType] = useState('auth')
+	const [type, setType] = useState('login')
+
+	const { mutate, isLoading } = useMutation(['auth'], (email, password) => {
+		AuthService.main(email, password, type)
+	})
 
 	const onSubmit = data => {
-		console.log(data)
+		mutate(data.email, data.password)
 	}
 	return (
 		<>

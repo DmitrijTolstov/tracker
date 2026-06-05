@@ -8,12 +8,16 @@ import dotenv from 'dotenv'
 dotenv.config()
 const app = express()
 import { prisma } from './app/prisma.js'
+import { errorHandler, notFound } from './app/middleware/error.middleware.js'
 
 async function main() {
 	if (process.env.NODE_END === 'development') app.use(morgan('dev'))
 
 	app.use(express.json())
 	app.use('/api/auth', autRrouter)
+
+	app.use(notFound)
+	app.use(errorHandler)
 
 	const PORT = process.env.PORT || 5000
 

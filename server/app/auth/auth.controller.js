@@ -1,7 +1,7 @@
 import { prisma } from '../prisma.js'
+import asyncHandler from 'express-async-handler'
 
-export const authUser = async (req, res) => {
-	const user = await prisma.user.findMany()
-
+export const authUser = asyncHandler(async (req, res) => {
+	const user = await prisma.user.findMany({})
 	res.json(user)
-}
+})

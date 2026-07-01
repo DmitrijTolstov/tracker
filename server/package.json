@@ -19,8 +19,10 @@
 		"dev": "nodemon server.js"
 	},
 	"dependencies": {
+		"@faker-js/faker": "^10.4.0",
 		"@prisma/adapter-pg": "^7.8.0",
 		"@prisma/client": "^7.8.0",
+		"argon2": "^0.44.0",
 		"dotenv": "^17.4.2",
 		"express": "^5.2.1",
 		"express-async-handler": "^1.2.0",
